@@ -1,7 +1,12 @@
 import * as React from 'react'
+import styled from 'styled-components'
 
 const App: React.SFC = props => (
-    <div className="yaaa">H1ello, React---!!</div>
+    <RedText className="yaaa">H1ello, React---!!</RedText>
 )
+
+const RedText = styled.div`
+    color: red;
+`
 
 export default App
