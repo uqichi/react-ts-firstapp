@@ -3,8 +3,8 @@ import styled from 'styled-components'
 
 import colors from '../constant/colors'
 
-const TaskList: React.SFC = ({children}) => (
-    <List>{children}</List>
+const TaskList: React.SFC = ({children, ...props}) => (
+    <List {...props}> {children}</List>
 )
 
 const List = styled.ul`

@@ -11,7 +11,7 @@ type Props = {
 const Task: React.SFC<Props> = ({completed, onClickOperation, children, ...props}) => (
     <Wrap {...props}>
         <TaskTitle className={completed ? 'strike' : null}>{children}</TaskTitle>
-        <Button onClick={e => onClickOperation()}>DONE</Button>
+        <Button onClick={e => onClickOperation()}>{completed ? 'DELETE' : 'COMPLETE'}</Button>
     </Wrap>
 )
 
