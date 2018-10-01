@@ -57,14 +57,20 @@ class App extends React.Component<{}, State> {
         return this.state.tasks.filter(todo => todo.completed === true)
     }
 
+    addTask() {
+        if (this.state.newTaskName === '') return
+        const changedTasks = [...this.state.tasks, { name: this.state.newTaskName, completed: false }]
+        this.setState({ ...this.state, tasks: changedTasks, newTaskName: '' })
+    }
+
     render = () => (
         <Wrapper>
             <TaskWrap>
                 <Title>TODO List</Title>
                 <AddTaskForm
-                    value={'hogehoge'}
-                    onChangeValue={value => null}
-                    onClickAddTask={() => null}
+                    value={this.state.newTaskName}
+                    onChangeValue={value => this.setState({ ...this.state, newTaskName: value })}
+                    onClickAddTask={() => this.addTask()}
                 />
                 <SpacedTaskList>
                     {this.inProgressTasks.map((todo, i) => (

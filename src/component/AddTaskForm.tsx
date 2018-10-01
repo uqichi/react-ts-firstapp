@@ -13,7 +13,7 @@ type Props = {
 const AddTaskForm: React.SFC<Props> = ({ value, onChangeValue, onClickAddTask, ...props }) => (
     <Outer {...props}>
         <Input type="text" value={value} onChange={e => onChangeValue(e.target.value)} />
-        <AddButton>ADD</AddButton>
+        <AddButton onClick={e => onClickAddTask()}>ADD</AddButton>
     </Outer>
 )
 
