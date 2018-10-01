@@ -49,6 +49,14 @@ class App extends React.Component<{}, State> {
         ], newTaskName:'' }
     }
 
+    get inProgressTasks() {
+        return this.state.tasks.filter(todo => todo.completed === false)
+    }
+
+    get completedTasks() {
+        return this.state.tasks.filter(todo => todo.completed === true)
+    }
+
     render = () => (
         <Wrapper>
             <TaskWrap>
@@ -59,7 +67,7 @@ class App extends React.Component<{}, State> {
                     onClickAddTask={() => null}
                 />
                 <SpacedTaskList>
-                    {this.state.tasks.map((todo, i) => (
+                    {this.inProgressTasks.map((todo, i) => (
                         <Task key={i} completed={todo.completed} onClickOperation={() => null}>{todo.name}</Task>
                     ))}
                 </SpacedTaskList>
@@ -67,7 +75,9 @@ class App extends React.Component<{}, State> {
             <CompletedTaskWrap>
                 <Title>Completed</Title>
                 <SpacedTaskList>
-                    <Task onClickOperation={() => null} completed>test</Task>
+                    {this.completedTasks.map((todo, i) => (
+                        <Task key={i} completed={todo.completed} onClickOperation={() => null}>{todo.name}</Task>
+                    ))}
                 </SpacedTaskList>
             </CompletedTaskWrap>
         </Wrapper>
